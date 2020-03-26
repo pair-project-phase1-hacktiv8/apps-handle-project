@@ -8,7 +8,7 @@
 </head>
 <body>
     <h2 align="center">ADD ROJECT</h2>
-    <form action="/project/add" method="POST">
+    <form action="/project/add/<%=idman[0].id%>" method="POST">
         <label for="name">Project Name:</label><br>
         <input type="text" id="name" name="name" ><br>
         <label for="projecttime">Project time:</label><br>
@@ -16,7 +16,9 @@
         <label for="manager">Manager:</label>
         <select id="manager" name="manager">
         <%for ( i in data ) {%>
-            <option value=<%=data[i].id%>><%= data[i].name%></option>
+            <% if (data[i].id == idman[0].id){ %>
+                <option value=<%=data[i].id%>><%= data[i].name%></option>
+            <%}%>
         <%}%>
         </select></br>
         <input type="submit" value="Submit">

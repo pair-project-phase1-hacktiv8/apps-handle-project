@@ -1,4 +1,4 @@
-const {Manager,Project,Staff} = require('../models')
+const {Manager,Project,Staff,RunningProject} = require('../models')
 class Controller{
     
     static login(req,res){
@@ -59,8 +59,25 @@ class Controller{
         .then(data=>{
             Staff.findAll({})
             .then(datastaff=>{
+                // res.send(datastaff)
 
-                res.render("project",{data:data,staff:datastaff})
+                Project.findAll({
+                    where:{
+                        ManagerId : id
+                    },
+                    order:['id'],
+                    include:{
+                        model:RunningProject,
+                        require:true,
+                        include:[Staff]
+                    }
+                })
+                .then(Datarunning=>{
+                    // res.send(Datarunning)
+                    
+                    res.render("project",{data:data,staff:datastaff,manager:[{id:id}],datarunning:Datarunning })
+                })
+
             })
             // res.send(data)
         })

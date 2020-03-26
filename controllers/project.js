@@ -18,12 +18,13 @@ class Controller{
    
 
     static addform(req,res){
+        const idman = req.params.idman
         Manager.findAll({
             order:['id']
         })
         .then(data=>{
             
-            res.render("projectadd",{data:data})
+            res.render("projectadd",{data:data,idman:[{id:idman}]})
         })
     }
     static editform(req,res){
@@ -33,12 +34,13 @@ class Controller{
 
     }
     static add(req,res){
+        const idman = req.params.idman
         const {name,projecttime,manager}=req.body
         console.log(name,projecttime,manager);
         
         Project.create({projectname:name,projecttime:projecttime,ManagerId:manager})
         .then(result=>{
-            res.redirect('/project')
+            res.redirect('/manager/project/'+idman)
         })
     }
     static edit(req,res){

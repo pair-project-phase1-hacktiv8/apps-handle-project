@@ -9,7 +9,7 @@
 </head>
 <body>
     <h2 align="center">LIST PROJECT</h2>
-    <a href = "/project/add"> <button> Add </button></a>
+    <a href = "/project/add/<%=manager[0].id%>"> <button> Add </button></a>
     <table >
         <tr>
           <th>ID</th>
@@ -30,6 +30,32 @@
             <td><a href = "/runningproject/add/<%=data[i].id%>"> <button> assign </button></a>
             </td>
         </tr>
+        <%}%>
+        
+      </table></body></br></br>
+
+      <h2 align="center">LIST ASSIGNED PROJECT</h2>
+      <table >
+        <tr>
+          <th>ID</th>
+          <th>Project Name</th>
+          <th>Projet Time</th>
+          <th>Staff Id</th>
+          <th>Staff Name</th>
+          <!-- <th>Assign</th> -->
+          
+        </tr>
+        <%for (i in datarunning) {%>
+          <%for (j in datarunning[i].RunningProjects) {%>
+          <tr>          
+            <td><%=datarunning[i].id%></td>
+            <td><%=datarunning[i].projectname%></td>
+            <td><%=datarunning[i].projecttime%></td>
+            <td><%=datarunning[i].RunningProjects[j].StaffId%></td>
+            <td><%=datarunning[i].RunningProjects[j].Staff.name%></td>
+             </td>
+          </tr>
+          <%}%>
         <%}%>
         
       </table>
