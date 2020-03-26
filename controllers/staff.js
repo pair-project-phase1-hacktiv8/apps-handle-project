@@ -44,7 +44,14 @@ class Controller{
             order:['id']
         })
         .then(data=>{
-            res.render("manager",{data:data})
+                Staff.findAll({
+                    order:['id']
+                })
+
+            .then(staff=>{
+            res.render("manager",{data:data,staff:staff})
+            
+            })
         })
     }
 
@@ -73,15 +80,14 @@ class Controller{
 
 
     static addform(req,res){
-        res.render("manageradd")
+        res.render("staffadd")
     }
     static editform(req,res){
         const id = req.params.id
-        Manager.findByPk(id)
+        Staff.findByPk(id)
         .then(data=>{
-            console.log(data.id);
-            
-            res.render('manageredit',{data:data})
+            // res.send(data)
+             res.render('staffedit',{data:data})
 
         })
         .catch(err=>{
@@ -90,29 +96,29 @@ class Controller{
     }
     static deleteform(req,res){
         const id = req.params.id
-        Manager.destroy({where:{
+        Staff.destroy({where:{
             id:id
         }})
         .then(result=>{
-            res.redirect('/manager')
+            res.redirect('/staff')
         })
     }
     static add(req,res){
         const {name,email,username,passw}=req.body
-        Manager.create({name:name,email:email,username:username,passw:passw})
+        Staff.create({name:name,email:email,username:username,passw:passw})
         .then(result=>{
-            res.redirect('/manager')
+            res.redirect('/staff')
         })
     }
     static edit(req,res){
         const id = req.params.id
         const {name,email,username,passw}=req.body
-        Manager.update({name:name,email:email,username:username,passw:passw},{
+        Staff.update({name:name,email:email,username:username,passw:passw},{
             where:{ id:id}
         })
 
         .then(result=>{
-            res.redirect('/manager')
+            res.redirect('/staff')
         })
 
     }

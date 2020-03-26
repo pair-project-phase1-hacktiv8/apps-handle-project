@@ -18,7 +18,14 @@ class Controller{
                     
                     Manager.findAll()
                     .then(result=>{
-                        res.render("manager",{data:result})
+
+                        Staff.findAll()
+                        .then(staff=>{
+
+                            res.render("manager",{data:result,staff:staff})
+                        })
+
+
                     })
 
                 }else{
@@ -39,7 +46,14 @@ class Controller{
             order:['id']
         })
         .then(data=>{
-            res.render("manager",{data:data})
+                Staff.findAll({
+                    order:['id']
+                })
+
+            .then(staff=>{
+            res.render("manager",{data:data,staff:staff})
+            
+            })
         })
     }
 
@@ -74,6 +88,7 @@ class Controller{
                 })
                 .then(Datarunning=>{
                     // res.send(Datarunning)
+                    // console.log(Datarunning[]);
                     
                     res.render("project",{data:data,staff:datastaff,manager:[{id:id}],datarunning:Datarunning })
                 })

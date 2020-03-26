@@ -30,6 +30,30 @@
         </tr>
         <%}%>
         
+      </table><br><br><br><br><b><br><br></b>
+    <h2 align="center">LIST STAFF</h2>
+    <a href = "/staff/add/"> <button> Add </button></a> 
+    <table >
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>email</th>
+          <th>username</th>
+          <th>password</th>
+          <th>actions</th>
+        </tr>
+        <%for (i in staff) {%>
+        <tr>          
+            <td><%=staff[i].id%></td>
+            <td><%=staff[i].name%></td>
+            <td><%=staff[i].email%></td>
+            <td><%=staff[i].username%></td>
+            <td>********</td>
+            <td><a href = "/staff/edit/<%=staff[i].id %>"> <button> Edit </button></a> | <a href ="/staff/delete/<%=staff[i].id%>"><button onclick="return confirm('Are you sure you want to Delete <%=staff[i].name%> ?')">Delete </button></a></td>
+        
+        </tr>
+        <%}%>
+        
       </table>
 </body>
 </html>
