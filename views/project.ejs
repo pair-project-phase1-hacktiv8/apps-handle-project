@@ -26,8 +26,7 @@
             <td><%=data[i].projectname%></td>
             <td><%=data[i].projecttime%></td>
             <td><%=data[i].Manager.name%></td>
-            <!-- <td><a href = "/project/edit/<%=data[i].id %>"> <button> Edit </button></a> | <a href ="/project/delete/<%=data[i].id%>"><button onclick="return confirm('Are you sure you want to Delete <%=data[i].name%> ?')">Delete </button></a> </td> -->
-            <td><a href = "/runningproject/add/<%=data[i].id%>"> <button> assign </button></a>
+            <td><a href = "/runningproject/add/<%=data[i].id%>/<%=data[i].ManagerId%>/form"> <button> assign </button></a>
             </td>
         </tr>
         <%}%>

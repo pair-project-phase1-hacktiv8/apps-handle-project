@@ -34,12 +34,14 @@ class Controller{
     // }
     static addform(req,res){
        const idproject = req.params.idpro
+       const idman = req.params.idman
         console.log(idproject);
         
         Staff.findAll()
                 .then(data=>{
                  data.forEach(element => {
                      element.idpro = idproject
+                     element.idman = idman
                  });
 
                     res.render("runningproject",{data:data})
@@ -53,11 +55,12 @@ class Controller{
     static add(req,res){
         const idproject = req.params.idpro
         const idstaff = req.params.idstaff
-         console.log(idproject,idstaff);        
+        const idman = req.params.idman
+        //  console.log(idproject,idstaff);        
          
          RunningProject.create({ProjectId:idproject,StaffId:idstaff})
          .then(result=>{
-            //  res.redirect('/manager/project/'+id)
+             res.redirect('/manager/project/'+idman)
          })
      }
     // static edit(req,res){
