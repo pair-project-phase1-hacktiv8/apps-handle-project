@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include ('partials/style')%>
+    <title>Add Manager</title>
+</head>
+<body>
+    <form action="/manager/add" method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" ><br>
+        <label for="email">email:</label><br>
+        <input type="email" id="email" name="email" ><br>   
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" ><br>    
+        <label for="passw">password:</label><br>
+        <input type="password" id="passw" name="passw" ><br> 
+        <input type="submit" value="Submit">
+      </form>
+</body>
+</html>

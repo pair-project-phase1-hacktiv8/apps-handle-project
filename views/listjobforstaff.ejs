@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include ('partials/style')%>
+    <title>Manager List</title>
+</head>
+<body>
+    <h2>LIST PROJECT</h2>
+    
+    <table >
+        <tr>
+          <th>ID</th>
+          <th>Project Name</th>
+          <th>Projet Time</th>
+          <!-- <th>Manager</th> -->
+          <!-- <th>Action</th> -->
+          <th>Assign</th>
+          
+        </tr>
+        <%for (i in data) {%>
+        <tr>          
+            <td><%=data[i].id%></td>
+            <td><%=data[i].projectname%></td>
+            <td><%=data[i].projecttime%></td>
+            
+            <!-- <td><a href = "/project/edit/<%=data[i].id %>"> <button> Edit </button></a> | <a href ="/project/delete/<%=data[i].id%>"><button onclick="return confirm('Are you sure you want to Delete <%=data[i].name%> ?')">Delete </button></a> </td> -->
+            <td><a href = "/runningproject/update/<%=data[i].id%>"> <button> Done </button></a>
+            </td>
+        </tr>
+        <%}%>
+        
+      </table>
+
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include ('partials/style')%>
+    <title>Add Project</title>
+</head>
+<body>
+    <form action="/project/add" method="POST">
+        <label for="name">Project Name:</label><br>
+        <input type="text" id="name" name="name" ><br>
+        <label for="projecttime">Project time:</label><br>
+        <input type="number" id="projecttime" name="projecttime" ><br>  
+        <label for="manager">Manager:</label>
+        <select id="manager" name="manager">
+        <%for ( i in data ) {%>
+            <option value=<%=data[i].id%>><%= data[i].name%></option>
+        <%}%>
+        </select></br>
+        <input type="submit" value="Submit">
+      </form>
+</body>
+</html>

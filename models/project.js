@@ -1,12 +1,24 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Project = sequelize.define('Project', {
-    projectname: DataTypes.STRING,
-    projecttime: DataTypes.INTEGER,
-    ManagerId: DataTypes.INTEGER
-  }, {});
+  
+
+class Project extends sequelize.Sequelize.Model{}
+
+Project.init({
+  projectname: DataTypes.STRING,
+  projecttime: DataTypes.INTEGER,
+  ManagerId: DataTypes.INTEGER,
+  status:DataTypes.BOOLEAN
+},{
+ sequelize,
+ modelName:"Project"
+})
+
+
   Project.associate = function(models) {
     // associations can be defined here
+    Project.belongsTo(models.Manager)
+    Project.hasMany(models.RunningProject)
   };
   return Project;
 };

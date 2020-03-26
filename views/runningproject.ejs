@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include ('partials/style')%>
+    <title>Manager List</title>
+</head>
+<body>
+    <h2>LIST STAFF</h2>    
+    <table >
+        <tr>
+          <th>ID Project</th>
+          <th>ID Staff</th>
+          <th>Name</th>
+          <th>Action</th>
+        </tr>
+        <%for (i in data) {%>
+        <tr> 
+            <td><%=data[i].idpro%></td>         
+            <td><%=data[i].id%></td>
+            <td><%=data[i].name%></td>
+            <td><a href ="/runningproject/add/<%=data[i].idpro%>/<%=data[i].id%>"><button >Add </button></a></td>
+         </tr>
+        <%}%>
+        
+      </table>
+</body>
+</html>
