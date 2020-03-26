@@ -21,11 +21,13 @@ class Controller{
                         where:{
                             StaffId :data[0].id
                         }
-
+                    },
+                    include:{
+                        model:Manager,
                     }
                 })
                 .then(result=>{
-                    console.log(data.id);
+                    // res.send(result);
                     
                     res.render("listjobforstaff",{data:result})
                 })

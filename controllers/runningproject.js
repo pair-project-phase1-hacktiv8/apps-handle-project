@@ -1,3 +1,4 @@
+const nodemailer = require('nodemailer');
 const {Manager,Project,RunningProject,Staff} = require('../models')
 class Controller{
     
@@ -63,9 +64,57 @@ class Controller{
              res.redirect('/manager/project/'+idman)
          })
      }
-    // static edit(req,res){
+    static editform(req,res){
+        const idpro = req.params.id
+        const email = req.params.email    
+        Project.update({status:true},
+            {
+                where :{
+                    id:idpro
+                }
+            })
+        .then(result=>{
 
-    // }
+            Project.findByPk(idpro)
+            .then (ress=>{
+                //Kirim email
+                let transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: 'irwanlearn@gmail.com',
+                        pass: 'Irwanlearn1ng'
+                    }
+                    });
+    
+                    let mailOptions = {
+                    from: 'irwanlearn@gmail.com',
+                    to: email,
+                    subject: `${ress.projectname} Done`,
+                    text: `${ress.projectname} Done`
+                    };
+    
+                    transporter.sendMail(mailOptions, function(error, info){
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log('Email sent: ' + info.response);
+                    }
+                    });
+
+            })
+            
+
+
+
+
+
+
+
+            res.send(result)
+        })
+
+
+    }
     // static delete(req,res) {
 
     // }

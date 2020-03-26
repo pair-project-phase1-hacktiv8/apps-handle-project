@@ -14,8 +14,8 @@
           <th>ID</th>
           <th>Project Name</th>
           <th>Projet Time</th>
-          <!-- <th>Manager</th> -->
-          <!-- <th>Action</th> -->
+          <th>Manager Id</th>
+          <th>Manager email/th>
           <th>Assign</th>
           
         </tr>
@@ -24,9 +24,9 @@
             <td><%=data[i].id%></td>
             <td><%=data[i].projectname%></td>
             <td><%=data[i].projecttime%></td>
-            
-            <!-- <td><a href = "/project/edit/<%=data[i].id %>"> <button> Edit </button></a> | <a href ="/project/delete/<%=data[i].id%>"><button onclick="return confirm('Are you sure you want to Delete <%=data[i].name%> ?')">Delete </button></a> </td> -->
-            <td><a href = "/runningproject/update/<%=data[i].id%>"> <button> Done </button></a>
+            <td><%=data[i].ManagerId%></td>
+            <td><%=data[i].Manager.email%></td>
+            <td><a href = "/runningproject/edit/<%=data[i].id%>/<%=data[i].Manager.email%>"> <button> Done </button></a>
             </td>
         </tr>
         <%}%>

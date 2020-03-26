@@ -1,3 +1,4 @@
+
 const routes = require("./routes")
 const express = require("express")
 const app= express()
@@ -10,3 +11,11 @@ app.use(routes)
 app.listen(port,()=>{
     console.log('port listening' + port);
 })
+
+
+
+
+
+// app.listen(port,()=>{
+//     console.log('port listening' + port);
+// })
