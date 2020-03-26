@@ -14,23 +14,24 @@ class Controller{
                 res.send("Data tidak ditemukan")
 
             }else {     
-                console.log(data[0].id);       
-                Project.findAll({
-                    include:{
-                        model:RunningProject,
-                        where:{
-                            StaffId :data[0].id
-                        }
-                    },
-                    include:{
-                        model:Manager,
-                    }
-                })
-                .then(result=>{
-                    // res.send(result);
+                // console.log(data[0].id);       
+                // Project.findAll({
+                //     include:{
+                //         model:RunningProject,
+                //         where:{
+                //             StaffId :data[0].id
+                //         }
+                //     },
+                //     include:{
+                //         model:Manager,
+                //     }
+                // })
+                // .then(result=>{
+                //     // res.send(result);
+                res.redirect("/staff/project/"+data[0].id)
                     
-                    res.render("listjobforstaff",{data:result})
-                })
+                    // res.redirect("listjobforstaff",{data:result})
+                // })
                 
             }
         })
@@ -58,26 +59,39 @@ class Controller{
     }
 
 
-    static showallmanager(req,res){
-        const id = req.params.id
-        Project.findAll({
-            where:{
-                ManagerId : id
-            },
-            order:['id'],
-            include:{
-                model:Manager,
-                require:true
-            }
-        })
-        .then(data=>{
-            Staff.findAll({})
-            .then(datastaff=>{
+    static showallstaff(req,res){
+       const id = req.params.id  
+       console.log(id);
+          
+                // Project.findAll({
+                //     include:[{
+                //         model:RunningProject,
+                //         where:{
+                //             StaffId :id
+                //         }                        
+                //      }],
+                //      include:[{
+                //          model:Manager
+                //      }]
+                // })
+                RunningProject.findAll({
+                    where:{
+                        StaffId :id
+                    },
+                    include:{
+                        model:Project,                        
+                        include:{
+                            model:Manager
+                        }                        
+                     }
+                })
 
-                res.render("project",{data:data,staff:datastaff})
-            })
-            // res.send(data)
-        })
+
+                .then(result=>{
+                    // res.send(result);
+                    
+                    res.render("listjobforstaff",{data:result})
+                })
     }
 
 

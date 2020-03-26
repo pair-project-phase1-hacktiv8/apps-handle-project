@@ -66,7 +66,8 @@ class Controller{
      }
     static editform(req,res){
         const idpro = req.params.id
-        const email = req.params.email    
+        const email = req.params.email  
+        const idstaff = req.params.idstaff  
         Project.update({status:true},
             {
                 where :{
@@ -75,42 +76,52 @@ class Controller{
             })
         .then(result=>{
 
-            Project.findByPk(idpro)
-            .then (ress=>{
-                //Kirim email
-                let transporter = nodemailer.createTransport({
-                    service: 'gmail',
-                    auth: {
-                        user: 'irwanlearn@gmail.com',
-                        pass: 'Irwanlearn1ng'
-                    }
-                    });
-    
-                    let mailOptions = {
-                    from: 'irwanlearn@gmail.com',
-                    to: email,
-                    subject: `${ress.projectname} Done`,
-                    text: `${ress.projectname} Done`
-                    };
-    
-                    transporter.sendMail(mailOptions, function(error, info){
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        console.log('Email sent: ' + info.response);
-                    }
-                    });
-
+            RunningProject.findAll({
+                where:{
+                    ProjectId: idpro
+                }
             })
+
+            .then(jmlorg=>{
+                console.log(jmlorg.length);
+                
+
+                Project.findByPk(idpro)
+                .then (ress=>{
+                    let jml_score = ress.projecttime / jmlorg.length
+                        for ( let i = 0;i < jmlorg.length; i++){
+
+                            Staff.increment({score:jml_score}, { where: { id: jmlorg[i].StaffId } })
+
+                        }
+                    //Kirim email
+                    let transporter = nodemailer.createTransport({
+                        service: 'gmail',
+                        auth: {
+                            user: 'irwanlearn@gmail.com',
+                            pass: 'Irwanlearn1ng'
+                        }
+                        });
+        
+                        let mailOptions = {
+                        from: 'irwanlearn@gmail.com',
+                        to: email,
+                        subject: `${ress.projectname} Done`,
+                        text: `${ress.projectname} Done`
+                        };
+        
+                        transporter.sendMail(mailOptions, function(error, info){
+                        if (error) {
+                            console.log(error);
+                        } else {
+                            console.log('Email sent: ' + info.response);
+                        }
+                        });
+
+                })
             
-
-
-
-
-
-
-
-            res.send(result)
+         })
+            res.redirect('/staff/project/'+idstaff)
         })
 
 
