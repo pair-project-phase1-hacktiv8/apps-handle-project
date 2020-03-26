@@ -44,6 +44,7 @@
           <th>email</th>
           <th>username</th>
           <th>password</th>
+          <th>score</th>
           <th>actions</th>
         </tr>
         <%for (i in staff) {%>
@@ -53,6 +54,7 @@
             <td><%=staff[i].email%></td>
             <td><%=staff[i].username%></td>
             <td>********</td>
+            <td><%=staff[i].score%></td>
             <td><a href = "/staff/edit/<%=staff[i].id %>"> <button> Edit </button></a> | <a href ="/staff/delete/<%=staff[i].id%>"><button onclick="return confirm('Are you sure you want to Delete <%=staff[i].name%> ?')">Delete </button></a></td>
         
         </tr>

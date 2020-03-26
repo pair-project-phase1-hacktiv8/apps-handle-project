@@ -8,7 +8,8 @@ Staff.init({
   name: DataTypes.STRING,
   email: DataTypes.STRING,
   username: DataTypes.STRING,
-  passw: DataTypes.STRING
+  passw: DataTypes.STRING,
+  score: DataTypes.DOUBLE
 },{
 sequelize,
 modelName : "Staff"
