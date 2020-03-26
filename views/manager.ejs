@@ -7,8 +7,8 @@
     <title>Manager List</title>
 </head>
 <body>
-    <h2>LIST MANAGER</h2>
-    <a href = "/manager/add/"> <button> Add </button></a>
+    <h2 align="center">LIST MANAGER</h2>
+    <a href = "/manager/add/"> <button> Add </button></a> || <a href = "/"> <button> Menu Login </button></a>
     <table >
         <tr>
           <th>ID</th>
@@ -24,7 +24,7 @@
             <td><%=data[i].name%></td>
             <td><%=data[i].email%></td>
             <td><%=data[i].username%></td>
-            <td><%=data[i].passw%></td>
+            <td>********</td>
             <td><a href = "/manager/edit/<%=data[i].id %>"> <button> Edit </button></a> | <a href ="/manager/delete/<%=data[i].id%>"><button onclick="return confirm('Are you sure you want to Delete <%=data[i].name%> ?')">Delete </button></a></td>
         
         </tr>

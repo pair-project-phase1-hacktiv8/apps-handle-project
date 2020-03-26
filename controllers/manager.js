@@ -15,7 +15,12 @@ class Controller{
 
             }else {
                 if(uname.toLowerCase() =='admin'){
-                    res.render("manager",{data:data})
+                    
+                    Manager.findAll()
+                    .then(result=>{
+                        res.render("manager",{data:result})
+                    })
+
                 }else{
                     res.redirect("/manager/project/"+data[0].id)
                 }
