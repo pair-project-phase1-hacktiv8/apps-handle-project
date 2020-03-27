@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
 
   RunningProject.init({
     ProjectId: DataTypes.INTEGER,
-    StaffId: DataTypes.INTEGER
+    StaffId: DataTypes.INTEGER,
+    score: DataTypes.INTEGER
   },{
     sequelize,
     modelName:"RunningProject"

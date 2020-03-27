@@ -60,6 +60,36 @@
         </tr>
         <%}%>
         
-      </table>
+      </table><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+      <canvas id="myChart" width="10px"></canvas>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+      <script>
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var names = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
+      var point = [0, 10, 5, 2, 20, 30, 45]
+      // for(let i in staff) {
+      //   names.push(staff[i].name)
+      //   point.push(staff[i].score)
+      // }
+      var chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: 'line',
+
+          // The data for our dataset
+          data: {
+              labels: names,
+              datasets: [{
+                  label: 'Grafik Kinerja Para Staff',
+                  backgroundColor: 'rgb(255, 99, 132)',
+                  borderColor: 'rgb(255, 99, 132)',
+                  data: point
+              }]
+          },
+
+          // Configuration options go here
+          options: {}
+      });
+      </script>
 </body>
 </html>

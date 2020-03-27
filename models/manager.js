@@ -8,7 +8,8 @@ Manager.init({
   name: DataTypes.STRING,
   email: DataTypes.STRING,
   username: DataTypes.STRING,
-  passw: DataTypes.STRING
+  passw: DataTypes.STRING,
+  score: DataTypes.INTEGER
 },{
   sequelize,
   modelName:"Manager"

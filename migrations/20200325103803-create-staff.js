@@ -20,6 +20,9 @@ module.exports = {
       passw: {
         type: Sequelize.STRING
       },
+      score: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -21,7 +21,7 @@ class Controller{
 
                         Staff.findAll()
                         .then(staff=>{
-
+                            // console.log(result, staff)
                             res.render("manager",{data:result,staff:staff})
                         })
 

@@ -8,7 +8,8 @@ Project.init({
   projectname: DataTypes.STRING,
   projecttime: DataTypes.INTEGER,
   ManagerId: DataTypes.INTEGER,
-  status:DataTypes.BOOLEAN
+  status:DataTypes.BOOLEAN,
+  score:DataTypes.INTEGER
 },{
  sequelize,
  modelName:"Project"
